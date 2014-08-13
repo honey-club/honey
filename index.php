@@ -1,5 +1,5 @@
 <?php
-// METODO POR HONEY
+// METODO POR HONEY prueba numero 35400
 //echo dirname(__FILE__);
 include('includes/funciones.php');
 /* 
