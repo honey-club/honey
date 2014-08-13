@@ -23,6 +23,7 @@ while (have_posts()) : the_post();
     $array[$contador]['texto'] =  get_the_content();
     $array[$contador]['imagen'] =  urlimagen(get_the_ID());
     $array[$contador]['categorias'] =  lascats(get_the_ID());
+    $array[$contador]['tags']= lostags(get_the_ID());
     $array[$contador]['twitter']= get_post_meta( get_the_ID(), 'hola', true);
     $array[$contador]['facebook']= get_post_meta( get_the_ID(), 'facebook', true);
     $array[$contador]['direccion']= get_post_meta( get_the_ID(), 'direccion', true);
@@ -45,7 +46,20 @@ foreach((get_the_category($postid)) as $category) {
       $cats .= $category->cat_ID.' ';
 }
     return  $cats;
+} //LOS CATS 
+
+function lostags($postid) {
+    $tags = "";
+$posttags = get_the_tags($postid);
+if ($posttags) {
+  foreach($posttags as $tag) {
+    $tags .= $tag->slug . ' '; 
+  }
 }
+
+
+    return  $tags;
+} //LOS TAGS
 
 
 
