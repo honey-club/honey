@@ -18,19 +18,20 @@ function consultapost($losids,$ndelciclo,$busqueda){
 query_posts( array( 'category__and' => $losids, 's' => $busqueda  ) );
 $contador=0;
 while (have_posts()) : the_post();
-    $array[$contador]['id'] =  get_the_ID();
-    $array[$contador]['titulo'] =  get_the_title();
-    $array[$contador]['texto'] =  get_the_content();
-    $array[$contador]['imagen'] =  urlimagen(get_the_ID());
-    $array[$contador]['categorias'] =  lascats(get_the_ID());
-    $array[$contador]['tags']= lostags(get_the_ID());
-    $array[$contador]['twitter']= get_post_meta( get_the_ID(), 'hola', true);
-    $array[$contador]['facebook']= get_post_meta( get_the_ID(), 'facebook', true);
-    $array[$contador]['direccion']= get_post_meta( get_the_ID(), 'direccion', true);
-    $array[$contador]['telefono']= get_post_meta( get_the_ID(), 'telefono', true);
-    $array[$contador]['web']= get_post_meta( get_the_ID(), 'web', true);
-    $array[$contador]['gps']= get_post_meta( get_the_ID(), 'gps', true);
-    $array[$contador]['horario']= get_post_meta( get_the_ID(), 'horario', true);
+
+   $array["result".$contador]['id'] =  get_the_ID();
+    $array["result".$contador]['titulo'] =  get_the_title();
+    $array["result".$contador]['texto'] =  'Contenido';// get_the_content();
+    $array["result".$contador]['imagen'] =  'imagen';// urlimagen(get_the_ID());
+    $array["result".$contador]['categorias'] =  lascats(get_the_ID());
+    $array["result".$contador]['tags']= lostags(get_the_ID());
+    $array["result".$contador]['twitter']= get_post_meta( get_the_ID(), 'hola', true);
+    $array["result".$contador]['facebook']= get_post_meta( get_the_ID(), 'facebook', true);
+    $array["result".$contador]['direccion']= get_post_meta( get_the_ID(), 'direccion', true);
+    $array["result".$contador]['telefono']= get_post_meta( get_the_ID(), 'telefono', true);
+    $array["result".$contador]['web']= get_post_meta( get_the_ID(), 'web', true);
+    $array["result".$contador]['gps']= get_post_meta( get_the_ID(), 'gps', true);
+    $array["result".$contador]['horario']= get_post_meta( get_the_ID(), 'horario', true);
   
     $contador++;
 endwhile;

@@ -18,6 +18,9 @@ include('includes/funciones.php');
     $_POST['email'] = 'user@asa.com';
 
 */
+
+   //$_POST['etiq'] = 'login';
+
 if (isset($_POST['etiq']) && $_POST['etiq'] != '') {
     // get etiq
     $etiq = $_POST['etiq'];
@@ -27,8 +30,10 @@ if (isset($_POST['etiq']) && $_POST['etiq'] != '') {
     if ($etiq == 'login') {
         // Request type is check Login
        // $email = $_POST['email'];
-        $pass = $_POST['pass'];
- 		$user = $_POST['user'];
+       // $pass = $_POST['pass'];
+ 		//$user = $_POST['user'];
+ 		 $user = 'admin';
+ 		$pass = 'Holachao123';
         // check for user
         $respuesta = Ingresar($user,$pass);
             //echo 'Hola ' . $user . '-' . $pass;
@@ -52,10 +57,9 @@ if (isset($_POST['etiq']) && $_POST['etiq'] != '') {
        echo json_encode($respuesta);
     } else if ($etiq == 'consultapost') {
 /* TRAMPA PARA SOLICITAR DATOS DE POST */
-$losids=array(11,11); // ESTOS SON LOS ID DE LAS CATEGORIAS QUE SE QUIEREN CONSULTAR
 /*
 DIRECTORIO RAPIDO DE IDS
-Sitios=28
+Sitios=2
 —Atributos=10
 — — Aire libre=15
 — — Alcohol=16
@@ -84,10 +88,16 @@ Sitios=28
 — — Saludable=30
 
 */
-$ndelciclo=99;  // ESTE ES EL LIMITE DE LA PETICION
-$busqueda="";
-$datosposts=consultapost($losids,$ndelciclo,$busqueda); // AQUI LLAMA A LA FUNCION
+$losids=$_POST['losids']; // ESTOS SON LOS ID DE LAS CATEGORIAS QUE SE QUIEREN CONSULTAR
+$losids=explode("y", $losids);
+$ndelpost= $_POST['ndelpost'];  // ESTE ES EL LIMITE DE LA PETICION
+$busqueda=$_POST['busqueda'];
+
+$datosposts=consultapost($losids,$ndelpost,$busqueda); // AQUI LLAMA A LA FUNCION
 echo json_encode($datosposts); //Y ACA LA IMPRIME EN JSON
+
+
+
 /* FIN DE LA TRAMPA DATOS POST */
     } else {
         echo "Solicitud Invalida";
