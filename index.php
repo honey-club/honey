@@ -29,11 +29,7 @@ if (isset($_POST['etiq']) && $_POST['etiq'] != '') {
        // $email = $_POST['email'];
         $pass = $_POST['pass'];
  		$user = $_POST['user'];
-
-
-
         // check for user
-
         $respuesta = Ingresar($user,$pass);
             //echo 'Hola ' . $user . '-' . $pass;
         if ($respuesta['status']) {
@@ -54,15 +50,8 @@ if (isset($_POST['etiq']) && $_POST['etiq'] != '') {
             
         $respuesta = Registrar($user,$pass,$email);
        echo json_encode($respuesta);
-    } else {
-        echo "Solicitud Invalida";
-    }
-} else {
-    echo "Acceso Denegado";
-}
-
+    } else if ($etiq == 'consultapost') {
 /* TRAMPA PARA SOLICITAR DATOS DE POST */
-echo "<br><br>"; //ESTO ES PARA BAJAR LA LINEA
 $losids=array(11,11); // ESTOS SON LOS ID DE LAS CATEGORIAS QUE SE QUIEREN CONSULTAR
 /*
 DIRECTORIO RAPIDO DE IDS
@@ -100,6 +89,18 @@ $busqueda="";
 $datosposts=consultapost($losids,$ndelciclo,$busqueda); // AQUI LLAMA A LA FUNCION
 echo json_encode($datosposts); //Y ACA LA IMPRIME EN JSON
 /* FIN DE LA TRAMPA DATOS POST */
+    } else {
+        echo "Solicitud Invalida";
+    }
+
+
+
+
+
+
+} else {
+    echo "Acceso Denegado";
+}
 
 
 ?>
