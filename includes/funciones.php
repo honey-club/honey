@@ -14,8 +14,8 @@ function Hola(){
     return 'Hola Darwin'; 
 }
 
-function consultapost($losids,$ndelciclo){
-query_posts( array( 'category__and' => $losids ) );
+function consultapost($losids,$ndelciclo,$busqueda){
+query_posts( array( 'category__and' => $losids, 's' => $busqueda  ) );
 $contador=0;
 while (have_posts()) : the_post();
     $array[$contador]['id'] =  get_the_ID();
@@ -31,6 +31,7 @@ while (have_posts()) : the_post();
     $array[$contador]['web']= get_post_meta( get_the_ID(), 'web', true);
     $array[$contador]['gps']= get_post_meta( get_the_ID(), 'gps', true);
     $array[$contador]['horario']= get_post_meta( get_the_ID(), 'horario', true);
+  
     $contador++;
 endwhile;
 return $array; 

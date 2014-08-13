@@ -96,7 +96,8 @@ Sitios=28
 
 */
 $ndelciclo=99;  // ESTE ES EL LIMITE DE LA PETICION
-$datosposts=consultapost($losids,$ndelciclo); // AQUI LLAMA A LA FUNCION
+$busqueda="";
+$datosposts=consultapost($losids,$ndelciclo,$busqueda); // AQUI LLAMA A LA FUNCION
 echo json_encode($datosposts); //Y ACA LA IMPRIME EN JSON
 /* FIN DE LA TRAMPA DATOS POST */
 
